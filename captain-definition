@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM python:3.8-slim"
+  ],
+  "context": "/app",
+  "contextAdditions": [
+    {
+      "source": "requirements.txt",
+      "target": "requirements.txt"
+    },
+    {
+      "source": ".",
+      "target": "/app"
+    }
+  ],
+  "app": {
+    "env": {
+      "TELEGRAM_BOT_TOKEN": {
+        "secret": true
+      }
+    },
+    "httpPort": 8080,
+    "cmd": [
+      "python",
+      "bot.py"
+    ]
+  }
+}
